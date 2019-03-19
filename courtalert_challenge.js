@@ -115,7 +115,10 @@ connection.query(avgCSV, (err, results)=>{
     if(err){
         return console.error(err.message);
     }
-    console.log(results);
+    let answer = JSON.parse(JSON.stringify(results));
+    for(property in answer){
+        console.log(`${answer[property].City} : ${answer[property].Rating}`);
+    }
 });
 // close the MySQL connection
 connection.end((err)=>{
